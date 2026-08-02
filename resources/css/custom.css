@@ -1,0 +1,76 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+     font-weight: 400;
+    font-style: normal;
+}
+ */
+
+
+.overlaping{
+    background-image: linear-gradient(180deg, rgba(26, 43, 61, 0) 0%, #1A2B3D 100%);
+}
+.tracking-card{
+    box-shadow: 0px 14px 40px rgba(26, 43, 61, 0.08);
+}
+.swiper-slide {
+    height: auto;
+}
+
+.swiper-wrapper {
+    align-items: stretch;
+}
+
+.swiper-slide > div,
+.swiper-slide figure {
+    height: 100%;
+}
+
+/* Pagination wrapper center */
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+
+/* Default dot */
+.custom-dot {
+  width: 6px;
+  height: 6px;
+  background: #949393;
+  border-radius: 50%;
+  margin: 0 4px !important;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+/* Active dot with outer ring */
+.swiper-pagination-bullet-active.custom-dot {
+  background: #1E73BE; /* inner blue circle */
+  transform: scale(1.2);
+   margin: 0 10px !important;
+}
+
+/* Outer circle */
+.swiper-pagination-bullet-active.custom-dot::after {
+  content: "";
+  position: absolute;
+  top: -4px;      /* bigger outer circle */
+  left: -4px;
+  bottom: -4px;
+  margin: auto;
+  right: -4px;
+  width: 14px;    /* outer size */
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #1E73BE; /* outer ring color */
+  opacity: 0.5;   /* soft look */
+}

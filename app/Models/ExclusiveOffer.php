@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class ExclusiveOffer extends Model
+{
+        protected $fillable = [
+        'title',
+        'img',
+        'short_desc',
+        'status',
+        'description',
+        // 'keywords'
+    ];
+}
