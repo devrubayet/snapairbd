@@ -13,16 +13,20 @@ class card extends Component
      */
     public $title;
     public $count;
+    public $desc;
     public $link;
     public $color;
+    public $iconcolor;
     public $icon;
-    public function __construct($title, $link, $color = 'blue', $icon = null, $count = null)
+    public function __construct($title, $link, $desc, $iconcolor = null, $color = null, $icon = null, $count = null)
     {
         $this->title = $title;
+        $this->desc=$desc;
         $this->count = $count;
         $this->link = $link;
         $this->color = $color;
         $this->icon = $icon;
+        $this->iconcolor = $iconcolor;
     }
 
 
