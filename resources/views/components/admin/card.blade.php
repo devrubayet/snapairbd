@@ -16,8 +16,8 @@
                     <h6 class="col-9 text-light font-weight-normal">{{ $desc }}</h6>
                     <div class="col-3 justify-end">
 
-                            @if ($count !== null)
-                            <div class="icon icon-box-success ">
+                            @if (isset($count) && $count !== null)
+                            <div class="icon icon-box-{{ $iconcolor }} ">
                                 <span class="icon "> {{ $count }}</span>
                             </div>
                                 
