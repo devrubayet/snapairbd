@@ -10,7 +10,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('/settings',[SiteSettingsController::class,'update'])->name('api.settings');
+Route::post('/settings',[SiteSettingsController::class,'update'])->name('api.settings-update');
 Route::get('/settings',[SiteSettingsController::class,'SiteSettings'])->name('api.settings');
 
 
