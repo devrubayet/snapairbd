@@ -48,47 +48,112 @@
                 <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
                     <div class="card col-lg-4 mx-auto">
                         <div class="card-body px-5 py-5">
-                            <h3 class="card-title text-left mb-3">Login</h3>
-                            <form method="POST" action="{{ route('login') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <label>Username or email *</label>
-                                    <input type="text" class="form-control p_input" name="email"
-                                        value="{{ old('email') }}">
+                    
+
+                                <!-- Login Form -->
+                                <div id="loginForm" style="{{ $errors->register->any() ? 'display:none' : 'display:block' }}"">
+                                    <h3 class="card-title text-left mb-3">Login</h3>
+
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf
+
+                                        <div class="form-group">
+                                            <label>Email *</label>
+                                            <input type="email" class="form-control p_input" name="email">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Password *</label>
+                                            <input type="password" class="form-control p_input" name="password">
+                                        </div>
+
+                                        <div class="form-group d-flex align-items-center justify-content-between">
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" name="remember" class="form-check-input">
+                                                    Remember me
+                                                </label>
+                                            </div>
+
+                                            <a href="{{ route('password.request') }}">Forgot Password?</a>
+                                        </div>
+                                        @if($errors->login->any())
+<div class="alert alert-danger">
+    <ul class="mb-0">
+        @foreach($errors->login->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+                                        <button class="btn btn-primary btn-block">Login</button>
+
+                                        <p class="text-center mt-3">
+                                            Don't have an account?
+                                            <a href="#" id="showRegister">Register</a>
+                                        </p>
+
+                                    </form>
                                 </div>
-                                <div class="form-group">
-                                    <label>Password *</label>
-                                    <input type="password" class="form-control p_input" name="password" required>
+
+                                <!-- Register Form -->
+                                <div id="registerForm"  style="{{ $errors->register->any() ? 'display:block' : 'display:none' }}">
+
+                                    <h3 class="card-title text-left mb-3">Register</h3>
+
+                                    <form method="POST" action="{{ route('register') }}">
+                                        @csrf
+
+                                        <div class="form-group">
+                                            <label>Name *</label>
+                                            <input id="name" class="form-control p_input" type="text" name="name" :value="old('name')" required autofocus autocomplete="name">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Email *</label>
+                                            <input id="email" class="form-control p_inputl" type="email" name="email" :value="old('email')" required autocomplete="username">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Password *</label>
+                                            <input id="password" class="form-control p_input"
+                            type="password"
+                            name="password"
+                            required autocomplete="new-password">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Confirm Password *</label>
+                                            <input id="password_confirmation" class="form-control p_input"
+                            type="password"
+                            name="password_confirmation" required autocomplete="new-password">
+                                        </div>
+
+                                        @if($errors->register->any())
+<div class="alert alert-danger">
+    <ul class="mb-0">
+        @foreach($errors->register->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+                                        <button class="btn btn-success btn-block">
+                                            Register
+                                        </button>
+
+                                        <p class="text-center mt-3">
+                                            Already have an account?
+                                            <a href="#" id="showLogin">Login</a>
+                                        </p>
+
+                                    </form>
+
                                 </div>
-                                @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                <div class="form-group d-flex align-items-center justify-content-between">
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" name="remember"> Remember me
-                                        </label>
-                                    </div>
-                                    <a href="{{ route('password.request') }}" class="forgot-pass">Forgot password</a>
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
-                                </div>
-                                <div class="d-flex">
-                                    <button class="btn btn-facebook me-2 col">
-                                        <i class="mdi mdi-facebook"></i> Facebook </button>
-                                    <button class="btn btn-google col">
-                                        <i class="mdi mdi-google-plus"></i> Google plus </button>
-                                </div>
-                                <p class="sign-up">Don't have an Account?<a href="{{ route('register') }}"> Sign Up</a></p>
-                            </form>
-                        </div>
+
+                            </div>
+                        
                     </div>
                 </div>
                 <!-- content-wrapper ends -->
@@ -121,6 +186,37 @@
     <script src="{{ asset('admin-end/assets/js/dashboard.js') }}"></script>
 
     <script>
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        document.getElementById('showRegister').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+        });
+
+        document.getElementById('showLogin').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'block';
+        });
+
+        $("#showRegister").click(function(e){
+    e.preventDefault();
+    $("#loginForm").fadeOut(200,function(){
+        $("#registerForm").fadeIn(200);
+    });
+});
+
+$("#showLogin").click(function(e){
+    e.preventDefault();
+    $("#registerForm").fadeOut(200,function(){
+        $("#loginForm").fadeIn(200);
+    });
+});
+
         // Clear button show/hide
         input.addEventListener('input', () => {
             clearBtn.style.display = input.value.length ? 'block' : 'none';

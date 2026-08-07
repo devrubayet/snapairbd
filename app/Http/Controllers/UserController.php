@@ -10,7 +10,7 @@ class UserController extends Controller
     
     function Dashboard(){
         if(Auth::check() && Auth::user()->user_type == 'user'){
-            return view('admin.dashboard');
+            return redirect('/');
         }elseif(Auth::check() && Auth::user()->user_type == 'admin'){
             return redirect()-> route('admin.dashboard');
         }

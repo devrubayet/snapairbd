@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class AdminDashboardController extends Controller
 {
-    function index(){
+    function index(Request $request){
         $feedbackCount = Testimonial::count();
         return view('admin.dashboard',compact('feedbackCount'));
     }
