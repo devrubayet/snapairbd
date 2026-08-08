@@ -46,7 +46,7 @@
     <!-- exclusive-offer -->
     <section class="exlusive-offer bg-gray-100 py-20">
         <div class="wrapper max-w-7xl mx-auto p-4">
-            <h2 class="text-xl md:text-3xl font-bold p-2">Exclusive Offer</h2>
+            <h2 class="text-xl max-w-fit border-l-4 bg-red-100 md:text-3xl text-red-500 font-bold p-2">Exclusive Offer</h2>
 
             <div class="crousal m-2 p-4 text-white">
                 <div class="swiper mySwiper w-full">
@@ -153,11 +153,11 @@
     <!-- airlines list -->
     <section class="airlines bg-red-100 py-24">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-center text-4xl font-semibold mb-4">
+            <h2 class=" max-w-fit text-left text-4xl border-l-4 p-2 bg-red-50 text-red-600 font-semibold mb-4">
                 Top Airlines Are With Us
             </h2>
 
-            <p class="max-w-3xl mx-auto text-center text-red-600 leading-tight mb-10">
+            <p class="max-w-md  text-left text-red-500 leading-tight mb-10">
                 Snapairbd's user-friendly platform connects you to top airlines
                 instantly. Enjoy a comfortable and hassle-free journey on any
                 destination.
@@ -190,7 +190,7 @@
     <!-- testimonial -->
     <section class="py-10">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-center text-3xl font-bold">What Our Clients Say's</h2>
+            <h2 class="text-left max-w-fit border-l-4 bg-red-100 p-2 text-3xl text-red-600 font-bold">What Our Clients Say's</h2>
             <div class="crousal my-6 p-10">
                 <div class="swiper testimonialSwiper  w-full">
                     <div class="swiper-wrapper">
