@@ -1,5 +1,5 @@
 <div class="swiper-slide">
-    <figure class="md:flex bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-indigo-950 dark:text-white h-full overflow-hidden">
+    <figure class="md:flex bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-red-800 dark:text-white h-full overflow-hidden">
         <img class="w-24 h-24 smw-1/4 md:w-full md:h-auto md:rounded-none rounded-full mx-auto overflow-hidden"
             src="{{ $testimonial->image_url }}" alt="" width="384" height="512" />
         <div class="pt-6 md:p-8 text-center md:text-left space-y-4">

@@ -1,4 +1,4 @@
- <nav class=" bg-indigo-950 shadow-lg outline-none fixed w-full z-20 top-0 start-0 border-b text-gray-300">
+ <nav class=" bg-red-600 shadow-lg outline-none fixed w-full z-20 top-0 start-0 border-b text-gray-300">
      <div class="max-w-6xl flex flex-wrap items-center justify-between mx-auto py-1 px-4">
          <a href="https://snapairbd.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
              <img src="{{ asset('storage/' . $settings->logo) }}" class="h-10" alt="Snapairbd" />

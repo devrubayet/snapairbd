@@ -5,7 +5,7 @@
                 class="absolute inset-1 bg-no-repeat bg-cover  bg-bottom  opacity-90"></div>
 
             <!-- Overlay -->
-            <div class="absolute inset-0 bg-linear-to-b from-transparent to-[rgb(30,27,75)]"></div>
+            <div class="absolute inset-0 bg-linear-to-b from-transparent to-[rgb(107,16,16)]"></div>
 
             <!-- Content -->
             <div
@@ -13,12 +13,12 @@
 
                 <!-- Column 1 -->
                 <div>
-                    <h3 class="text-purple-800 font-semibold mb-4 uppercase tracking-wide">About Us</h3>
+                    <h3 class="text-red-800 font-semibold mb-4 uppercase tracking-wide">About Us</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-purple-700">About SnapAir</a></li>
-                        <li><a href="#" class="hover:text-purple-700">Trade License No:
+                        <li><a href="#" class="hover:text-red-700">About SnapAir</a></li>
+                        <li><a href="#" class="hover:text-red-700">Trade License No:
                                 {{ $settings->trade_license }}</a></li>
-                        <li><a href="#" class="hover:text-purple-700">Civil Aviation Certificate No:
+                        <li><a href="#" class="hover:text-red-700">Civil Aviation Certificate No:
                                 <b>{{ $settings->civil_no }}</b></a></li>
 
                     </ul>
@@ -26,38 +26,38 @@
 
                 <!-- Column 2 -->
                 <div>
-                    <h3 class="text-purple-800 font-semibold mb-4 uppercase tracking-wide">Book & Manage</h3>
+                    <h3 class="text-red-800 font-semibold mb-4 uppercase tracking-wide">Book & Manage</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-purple-700">Visa Track</a></li>
-                        <li><a href="#" class="hover:text-purple-700">Visa Reservation Schedule</a></li>
+                        <li><a href="#" class="hover:text-red-700">Visa Track</a></li>
+                        <li><a href="#" class="hover:text-red-700">Visa Reservation Schedule</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 3 -->
                 <div>
-                    <h3 class="text-purple-800 font-semibold mb-4 uppercase tracking-wide">Where We Offer</h3>
+                    <h3 class="text-red-800 font-semibold mb-4 uppercase tracking-wide">Where We Offer</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-purple-700">Route Map</a></li>
-                        <li><a href="#" class="hover:text-purple-700">Partner Airlines</a></li>
-                        <li><a href="#" class="hover:text-purple-700">Popular Flights</a></li>
+                        <li><a href="#" class="hover:text-red-700">Route Map</a></li>
+                        <li><a href="#" class="hover:text-red-700">Partner Airlines</a></li>
+                        <li><a href="#" class="hover:text-red-700">Popular Flights</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 4 -->
                 <div>
-                    <h3 class="text-purple-800 font-semibold mb-4 uppercase tracking-wide">Prepare To Travel</h3>
+                    <h3 class="text-red-800 font-semibold mb-4 uppercase tracking-wide">Prepare To Travel</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-purple-700">Baggage Guidelines</a></li>
-                        <li><a href="#" class="hover:text-purple-700">Airport Information</a></li>
-                        <li><a href="#" class="hover:text-purple-700">Travel Tips</a></li>
-                        <li><a href="#" class="hover:text-purple-700">Medical Assistance</a></li>
-                        <li><a href="#" class="hover:text-purple-700">Travelling with Pets</a></li>
+                        <li><a href="#" class="hover:text-red-700">Baggage Guidelines</a></li>
+                        <li><a href="#" class="hover:text-red-700">Airport Information</a></li>
+                        <li><a href="#" class="hover:text-red-700">Travel Tips</a></li>
+                        <li><a href="#" class="hover:text-red-700">Medical Assistance</a></li>
+                        <li><a href="#" class="hover:text-red-700">Travelling with Pets</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 5 (App Section) -->
                 <div>
-                    <h3 class="text-purple-800 font-semibold mb-4 uppercase tracking-wide">SnapAirBD</h3>
+                    <h3 class="text-red-800 font-semibold mb-4 uppercase tracking-wide">SnapAirBD</h3>
                     <p class="mb-4 text-gray-600"> book and manage flights on the go.</p>
                     <div class="space-y-3">
                         <img src="img/add.png" class="h-10" alt="App Store">
@@ -73,9 +73,9 @@
                     class="max-w-7xl mx-auto px-6 py-6 text-xs text-white flex flex-col md:flex-row justify-between gap-4">
                     <p>© 2026 Your Airline. All Rights Reserved.</p>
                     <div class="flex gap-6">
-                        <a href="#" class="hover:text-purple-700">Privacy Policy</a>
-                        <a href="#" class="hover:text-purple-700">Terms of Service</a>
-                        <a href="#" class="hover:text-purple-700">Contact</a>
+                        <a href="#" class="hover:text-red-700">Privacy Policy</a>
+                        <a href="#" class="hover:text-red-700">Terms of Service</a>
+                        <a href="#" class="hover:text-red-700">Contact</a>
                     </div>
                 </div>
             </div>

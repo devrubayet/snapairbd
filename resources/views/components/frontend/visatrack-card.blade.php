@@ -8,14 +8,14 @@
         <form class="flex flex-col md:flex-row gap-4" action="">
             <!-- Input -->
             <div class="input-group flex flex-col w-full md:w-5/6">
-                <input class="w-full  border-indigo-950 bg-indigo-200 rounded-md px-4 py-3 outline-indigo-900" type="text" id="reference_number"
+                <input class="w-full  border-red-950 bg-red-200 rounded-md px-4 py-3 outline-red-900" type="text" id="reference_number"
                     name="reference_number" placeholder="Enter Your Reference Number" />
             </div>
 
             <!-- Button -->
             <div class="input-group md:w-1/6">
                 <input onclick="openModal()"
-                    class="w-full h-full border rounded-md bg-indigo-900 px-3 py-2 text-white text-xl font-bold cursor-pointer hover:bg-indigo-600 transition"
+                    class="w-full h-full border rounded-md bg-red-600 px-3 py-2 text-white text-xl font-bold cursor-pointer hover:bg-red-900 transition"
                     type="button" value="Track" />
             </div>
         </form>

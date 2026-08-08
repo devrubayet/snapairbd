@@ -61,7 +61,7 @@
 
                                         <!-- Indigo Slide-up Overlay -->
                                         <div
-                                            class="absolute inset-0 bg-indigo-900 text-white translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-out px-5 py-4 flex flex-col justify-center">
+                                            class="absolute inset-0 bg-red-900 text-white translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-out px-5 py-4 flex flex-col justify-center">
                                             <!-- LEFT TOP SVG -->
                                             <div class="absolute top-0 left-0">
                                                 <svg width="133" height="108" viewBox="0 0 133 108" fill="none"
@@ -168,7 +168,7 @@
                 <!-- CARD -->
                 @foreach ($airlines as $airline)
                     <div
-                        class="card group hover:bg-white rounded-lg border-x-2 shadow border-indigo-900 px-4 py-2 flex items-center gap-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                        class="card group hover:bg-white rounded-lg border-x-2 shadow border-red-900 px-4 py-2 flex items-center gap-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                         <img class="w-5 h-5 sm:w-8 sm:h-8" src="{{ asset('storage/' . $airline->image) }}"
                             alt="" />
 
