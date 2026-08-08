@@ -2,10 +2,10 @@
         <footer class="relative text-gray-800">
             <!-- Background Pattern -->
             <div style="background-image: url('./img/bg1.png');"
-                class="absolute inset-1 bg-no-repeat bg-cover  bg-bottom  opacity-90"></div>
+                class="absolute hidden inset-1 bg-no-repeat bg-cover  bg-bottom  opacity-90"></div>
 
             <!-- Overlay -->
-            <div class="absolute inset-0 bg-linear-to-b from-transparent to-[rgb(107,16,16)]"></div>
+            <div class="absolute inset-0 bg-linear-to-b from-transparent to-[rgb(255,37,37)]"></div>
 
             <!-- Content -->
             <div

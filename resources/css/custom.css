@@ -15,11 +15,9 @@
 
 
 .overlaping{
-    background-image: linear-gradient(180deg, rgba(26, 43, 61, 0) 0%, #3d1a1a 100%);
+    background-image: linear-gradient(180deg, rgba(61, 26, 26, 0) 0%, #3d1a1a 100%);
 }
-.tracking-card{
-    box-shadow: 0px 14px 40px rgba(26, 43, 61, 0.08);
-}
+
 .swiper-slide {
     height: auto;
 }

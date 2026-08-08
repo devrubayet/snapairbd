@@ -151,13 +151,13 @@
     </section>
 
     <!-- airlines list -->
-    <section class="airlines bg-slate-200 py-24">
+    <section class="airlines bg-red-100 py-24">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="text-center text-4xl font-semibold mb-4">
                 Top Airlines Are With Us
             </h2>
 
-            <p class="max-w-3xl mx-auto text-center text-gray-500 leading-tight mb-10">
+            <p class="max-w-3xl mx-auto text-center text-red-600 leading-tight mb-10">
                 Snapairbd's user-friendly platform connects you to top airlines
                 instantly. Enjoy a comfortable and hassle-free journey on any
                 destination.
@@ -168,7 +168,7 @@
                 <!-- CARD -->
                 @foreach ($airlines as $airline)
                     <div
-                        class="card group hover:bg-white rounded-lg border-x-2 shadow border-red-900 px-4 py-2 flex items-center gap-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                        class="card group bg-red-200 hover:bg-white rounded-lg border-x-2 shadow border-red-900 px-4 py-2 flex items-center gap-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                         <img class="w-5 h-5 sm:w-8 sm:h-8" src="{{ asset('storage/' . $airline->image) }}"
                             alt="" />
 
@@ -177,7 +177,7 @@
                         </h2>
 
                         <i
-                            class="fa-solid fa-greater-than transition-all duration-300 group-hover:translate-x-2 group-hover:text-indigo-500 text-slate-400 text-sm"></i>
+                            class="fa-solid fa-greater-than text-red-300 transition-all duration-300 group-hover:translate-x-2  group-hover:text-red-400  text-sm"></i>
                     </div>
                 @endforeach
 
