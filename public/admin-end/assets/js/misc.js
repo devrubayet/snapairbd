@@ -7,9 +7,11 @@
     var footer = $('.footer');
     var sidebar = $('.sidebar');
 
-    //Add active class to nav-link based on url dynamically
-    //Active class can be hard coded directly in html file also as required
-
+    /* 
+    =================================================================
+    Laravel Blade control-এর সাথে কনফ্লিক্ট এড়াতে JavaScript এর 
+    Active Class Logic টি বন্ধ করে দেওয়া হলো।
+    =================================================================
     function addActiveClass(element) {
       if (current === "") {
         //for root url
@@ -45,13 +47,12 @@
       var $this = $(this);
       addActiveClass($this);
     })
+    ================================================================= */
 
     //Close other submenu in sidebar on opening any
-
     sidebar.on('show.bs.collapse', '.collapse', function() {
       sidebar.find('.collapse.show').collapse('hide');
     });
-
 
     //Change sidebar and content-wrapper height
     applyStyles();
@@ -87,11 +88,11 @@
       if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
         if (document.documentElement.requestFullScreen) {
           document.documentElement.requestFullScreen();
-        } else if (document.documentElement.mozRequestFullScreen) {
+        } else if (document.mozRequestFullScreen) {
           document.documentElement.mozRequestFullScreen();
-        } else if (document.documentElement.webkitRequestFullScreen) {
+        } else if (document.webkitRequestFullScreen) {
           document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-        } else if (document.documentElement.msRequestFullscreen) {
+        } else if (document.msRequestFullscreen) {
           document.documentElement.msRequestFullscreen();
         }
       } else {

@@ -15,8 +15,7 @@
             <div class="profile-desc">
                 <div class="profile-pic">
                     <div class="count-indicator">
-                        <img class="img-xs rounded-circle" src="{{ asset('admin-end/assets/images/faces/face15.jpg') }}"
-                            alt="">
+                        <img class="img-xs rounded-circle" src="{{ asset('admin-end/assets/images/faces/face15.jpg') }}" alt="">
                         <span class="count bg-success"></span>
                     </div>
                     <div class="profile-name">
@@ -29,72 +28,105 @@
 
         <li class="nav-item nav-category"><span class="nav-link">Navigation</span></li>
 
-        <li class="nav-item menu-items {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+        <!-- Dashboard -->
+        <li class="nav-item menu-items {{ request()->routeIs('dashboard', 'admin.dashboard') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('dashboard') }}">
                 <span class="menu-icon"><i class="mdi mdi-home"></i></span>
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
 
-        <li class="nav-item menu-items {{ request()->routeIs('our-slider.*') ? 'active' : '' }}">
+        <!-- Our Slider -->
+        <li class="nav-item menu-items {{ request()->routeIs('all-slider', 'service-create') ? 'active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#slider-menu"
-                aria-expanded="{{ request()->routeIs('our-slider.*') ? 'true' : 'false' }}"
+                aria-expanded="{{ request()->routeIs('all-slider', 'service-create') ? 'true' : 'false' }}"
                 aria-controls="slider-menu">
                 <span class="menu-icon"><i class="mdi mdi-image"></i></span>
                 <span class="menu-title">Our Slider</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {{ request()->routeIs('all-slider') ? 'show' : '' }}" id="slider-menu">
+            <div class="collapse {{ request()->routeIs('all-slider', 'service-create') ? 'show' : '' }}" id="slider-menu">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item {{ request()->routeIs('all-slider') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('all-slider') }}">
                             <span class="menu-icon"><i class="mdi mdi-image-multiple"></i></span>
-
-                            All Sliders</a>
+                            All Sliders
+                        </a>
                     </li>
                     <li class="nav-item {{ request()->routeIs('service-create') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('service-create') }}">
                             <span class="menu-icon"><i class="mdi mdi-library-plus"></i></span>
-                            Add Slider</a>
+                            Add Slider
+                        </a>
                     </li>
-
                 </ul>
             </div>
         </li>
 
-        <li class="nav-item menu-items {{ request()->routeIs('create-airline') ? 'active' : '' }}">
+        <!-- Clients -->
+        <li class="nav-item menu-items {{ request()->routeIs('clients.*') ? 'active' : '' }}">
+            <a class="nav-link" data-toggle="collapse" href="#client-menu"
+                aria-expanded="{{ request()->routeIs('clients.*') ? 'true' : 'false' }}"
+                aria-controls="client-menu">
+                <span class="menu-icon"><i class="mdi mdi-account-multiple"></i></span>
+                <span class="menu-title">Clients</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse {{ request()->routeIs('clients.*') ? 'show' : '' }}" id="client-menu">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item {{ request()->routeIs('clients.index') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('clients.index') }}">
+                            <span class="menu-icon"><i class="mdi mdi-account-multiple"></i></span>
+                            All Clients
+                        </a>
+                    </li>
+                    <li class="nav-item {{ request()->routeIs('clients.create') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('clients.create') }}">
+                            <span class="menu-icon"><i class="mdi mdi-account-multiple-plus"></i></span>
+                            Add client
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Airlines List -->
+        <li class="nav-item menu-items {{ request()->routeIs('showAirlines', 'create-airline') ? 'active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#airlines-menu"
-                aria-expanded="{{ request()->routeIs('create-airline') ? 'true' : 'false' }}"
+                aria-expanded="{{ request()->routeIs('showAirlines', 'create-airline') ? 'true' : 'false' }}"
                 aria-controls="airlines-menu">
                 <span class="menu-icon"><i class="mdi mdi-airplane"></i></span>
                 <span class="menu-title">Airlines List</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {{ request()->routeIs('create-airline') ? 'show' : '' }}" id="airlines-menu">
+            <div class="collapse {{ request()->routeIs('showAirlines', 'create-airline') ? 'show' : '' }}" id="airlines-menu">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item {{ request()->routeIs('showAirlines') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('showAirlines') }}">
                             <span class="menu-icon"><i class="mdi mdi-airplane"></i></span>
-                            All Airlines</a>
+                            All Airlines
+                        </a>
                     </li>
                     <li class="nav-item {{ request()->routeIs('create-airline') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('create-airline') }}">
-                            <span class="menu-icon"> <i class="mdi mdi-plus-circle"></i></span>
-                            Add Airline</a>
+                            <span class="menu-icon"><i class="mdi mdi-plus-circle"></i></span>
+                            Add Airline
+                        </a>
                     </li>
                 </ul>
             </div>
         </li>
 
-        <li class="nav-item menu-items {{ request()->routeIs('all-testi.*') ? 'active' : '' }}">
+        <!-- Feedback -->
+        <li class="nav-item menu-items {{ request()->routeIs('all-testi', 'create-testi') ? 'active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#feedback-menu"
-                aria-expanded="{{ request()->routeIs('all-testi.*') ? 'true' : 'false' }}"
+                aria-expanded="{{ request()->routeIs('all-testi', 'create-testi') ? 'true' : 'false' }}"
                 aria-controls="feedback-menu">
                 <span class="menu-icon"><i class="mdi mdi-message"></i></span>
                 <span class="menu-title">Feedback</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {{ request()->routeIs('all-testi.*') ? 'show' : '' }}" id="feedback-menu">
+            <div class="collapse {{ request()->routeIs('all-testi', 'create-testi') ? 'show' : '' }}" id="feedback-menu">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item {{ request()->routeIs('all-testi') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('all-testi') }}">
@@ -105,54 +137,53 @@
                     <li class="nav-item {{ request()->routeIs('create-testi') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('create-testi') }}"> 
                             <span class="menu-icon"><i class="mdi mdi-message-plus"></i></span>
-                            Add Feedback</a>
+                            Add Feedback
+                        </a>
                     </li>
                 </ul>
             </div>
         </li>
 
-        
-        <li class="nav-item menu-items {{ request()->routeIs('settings.*') ? 'active' : '' }}">
+        <!-- Site Settings -->
+        <li class="nav-item menu-items {{ request()->routeIs('settings-edit') ? 'active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#siteinfo-menu"
-                aria-expanded="{{ request()->routeIs('settings.*') ? 'true' : 'false' }}"
+                aria-expanded="{{ request()->routeIs('settings-edit') ? 'true' : 'false' }}"
                 aria-controls="siteinfo-menu">
                 <span class="menu-icon"><i class="mdi mdi-information"></i></span>
                 <span class="menu-title">Site Settings</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {{ request()->routeIs('settings.*') ? 'show' : '' }}" id="siteinfo-menu">
+            <div class="collapse {{ request()->routeIs('settings-edit') ? 'show' : '' }}" id="siteinfo-menu">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item {{ request()->routeIs('settings-edit') ? 'active' : '' }}">
-                        <a class="nav-link {{ request()->routeIs('settings-edit') ? 'active' : '' }}"
-                            href="{{ route('settings-edit') }}">
+                        <a class="nav-link" href="{{ route('settings-edit') }}">
                             <span class="menu-icon"><i class="mdi mdi-settings"></i></span>
                             Settings 
                         </a>
                     </li>
-
                 </ul>
             </div>
         </li>
 
-
-        <li class="nav-item menu-items {{ request()->routeIs('bank.*') ? 'active' : '' }}">
+        <!-- Bank Details -->
+        <li class="nav-item menu-items {{ request()->routeIs('all-bank', 'bank-create') ? 'active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#bank-menu"
-                aria-expanded="{{ request()->routeIs('bank.*') ? 'true' : 'false' }}"
+                aria-expanded="{{ request()->routeIs('all-bank', 'bank-create') ? 'true' : 'false' }}"
                 aria-controls="bank-menu">
                 <span class="menu-icon"><i class="mdi mdi-bank"></i></span>
                 <span class="menu-title">Bank Details</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {{ request()->routeIs('bank.*') ? 'show' : '' }}" id="bank-menu">
+            <div class="collapse {{ request()->routeIs('all-bank', 'bank-create') ? 'show' : '' }}" id="bank-menu">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item {{ request()->routeIs('all-bank') ? 'active' : '' }}">
-                        {{-- <a class="nav-link" href="{{ route('all-bank') }}"> --}}
+                        <a class="nav-link" href="#">
                             <span class="menu-icon"><i class="mdi mdi-bank"></i></span>
                             All Bank Details
                         </a>
                     </li>
                     <li class="nav-item {{ request()->routeIs('bank-create') ? 'active' : '' }}">
-                        {{-- <a class="nav-link" href="{{ route('bank-create') }}"> --}}
+                        <a class="nav-link" href="#">
                             <span class="menu-icon"><i class="mdi mdi-plus-circle"></i></span>
                             Add bank Details
                         </a>
@@ -160,50 +191,27 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item menu-items {{ request()->routeIs('client.*') ? 'active' : '' }}">
-            <a class="nav-link" data-toggle="collapse" href="#client-menu"
-                aria-expanded="{{ request()->routeIs('bank.*') ? 'true' : 'false' }}"
-                aria-controls="bank-menu">
-                <span class="menu-icon"><i class="mdi mdi-bank"></i></span>
-                <span class="menu-title">Client Details</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse {{ request()->routeIs('client.*') ? 'show' : '' }}" id="client-menu">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item {{ request()->routeIs('all-client') ? 'active' : '' }}">
-                        {{-- <a class="nav-link" href="{{ route('client.index') }}"> --}}
-                            <span class="menu-icon"><i class="mdi mdi-bank"></i></span>
-                            All Client Details
-                        </a>
-                    </li>
-                    <li class="nav-item {{ request()->routeIs('client-create') ? 'active' : '' }}">
-                        {{-- <a class="nav-link" href="{{ route('client.create') }}"> --}}
-                            <span class="menu-icon"><i class="mdi mdi-plus-circle"></i></span>
-                            Add Client Details
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item menu-items {{ request()->routeIs('invoice.*') ? 'active' : '' }}">
+        
+        <!-- Invoices -->
+        <li class="nav-item menu-items {{ request()->routeIs('invoices.*') ? 'active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#invoice-menu"
-                aria-expanded="{{ request()->routeIs('bank.*') ? 'true' : 'false' }}"
+                aria-expanded="{{ request()->routeIs('invoices.*') ? 'true' : 'false' }}"
                 aria-controls="invoice-menu">
-                <span class="menu-icon"><i class="mdi mdi-bank"></i></span>
-                <span class="menu-title">Invoices </span>
+                <span class="menu-icon"><i class="mdi mdi-file-document"></i></span>
+                <span class="menu-title">Invoices</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {{ request()->routeIs('invoice.*') ? 'show' : '' }}" id="invoice-menu">
+            <div class="collapse {{ request()->routeIs('invoices.*') ? 'show' : '' }}" id="invoice-menu">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item {{ request()->routeIs('invoices.index') ? 'active' : '' }}">
-                        {{-- <a class="nav-link" href="{{ route('invoices.index') }}"> --}}
-                            <span class="menu-icon"><i class="mdi mdi-bank"></i></span>
+                        <a class="nav-link" href="#">
+                            <span class="menu-icon"><i class="mdi mdi-file-document-box"></i></span>
                             Invoices
                         </a>
                     </li>
-                    
                 </ul>
             </div>
         </li>
+
     </ul>
 </nav>

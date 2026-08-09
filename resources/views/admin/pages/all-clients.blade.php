@@ -1,167 +1,328 @@
 @extends('admin.base')
 
 @section('content')
-<div class="container py-5">
-    <div class="card shadow-sm p-4 rounded-3">
 
-        <h2 class="mb-3">Client List</h2>
-        <p class="fs-5 fw-bold mb-3 text-secondary">All registered clients</p>
+<div class="container-fluid">
 
-        <!-- Search Form -->
-        <form id="client-search-form" class="row g-2 mb-3">
-            @csrf
-            <div class="col-12 col-md-6 position-relative">
-                <input type="text" name="search" id="search" class="form-control form-control-lg pe-5"
-                    placeholder="Search by name, phone or passport">
+    {{-- ================= HEADER ================= --}}
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-                <!-- Clear Button -->
-                <span id="clearSearch" 
-                    style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
-                    cursor:pointer; display:none; font-size:18px; color:#999;">&times;</span>
-            </div>
+        <div>
+            <h4 class="mb-1">Clients</h4>
+            <p class="text-muted mb-0">
+                Manage all your clients
+            </p>
+        </div>
 
-            <div class="col-12 col-md-auto">
-                <button type="submit" class="btn btn-secondary btn-lg w-100">Search</button>
-            </div>
+        <a href="{{ route('clients.create') }}" class="btn btn-primary">
+            + Add New Client
+        </a>
 
-            <div class="col-12 col-md-auto">
-                <a href="{{ route('client.create') }}" class="btn btn-primary btn-lg w-100">
-                    + Add Client
-                </a>
-            </div>
-        </form>
-
-        <!-- Result -->
-        <div id="client-result"></div>
     </div>
-</div>
 
-<script>
-    const form = document.getElementById("client-search-form");
-    const searchInput = document.getElementById("search");
-    const clearBtn = document.getElementById("clearSearch");
-    const resultDiv = document.getElementById("client-result");
 
-    // Show/hide clear button
-    searchInput.addEventListener("input", () => {
-        clearBtn.style.display = searchInput.value.length ? "block" : "none";
-    });
+    {{-- ================= SUCCESS MESSAGE ================= --}}
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
 
-    clearBtn.addEventListener("click", () => {
-        searchInput.value = "";
-        clearBtn.style.display = "none";
-        searchInput.focus();
-        fetchClientData();
-    });
+            {{ session('success') }}
 
-    async function fetchClientData(search = '', pageUrl = "{{ route('client.index.ajax') }}") {
-        resultDiv.innerHTML = `
-            <div class="d-flex justify-content-center align-items-center flex-column" style="height:150px;">
-                <div class="spinner-border text-secondary" style="width:4rem; height:4rem;"></div>
-                <p class="mt-1 text-muted">Loading clients...</p>
-            </div>
-        `;
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+            ></button>
 
-        try {
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        </div>
+    @endif
 
-            const response = await fetch(pageUrl, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken
-                },
-                body: JSON.stringify({ search: search })
-            });
 
-            const data = await response.json();
+    {{-- ================= SEARCH ================= --}}
+    <div class="card mb-4">
 
-            if (data.success) {
+        <div class="card-body">
 
-                let rows = '';
-                data.data.forEach(client => {
-                    rows += `
-                        <tr>
-                            <td><a href="client/${client.id}/overview">${client.name}</a></td>
-                            <td>${client.phone}</td>
-                            <td>${client.email ?? "-"}</td>
-                            <td>${client.passport_number}</td>
-                            <td>${client.address ?? "-"}</td>
+            <form
+                action="{{ route('clients.index') }}"
+                method="GET"
+            >
 
-                            <td>
-                                <a href="client/${client.id}/edit" class="btn btn-sm btn-primary">Edit</a>
+                <div class="row g-2">
 
-                                <form action="/client/${client.id}" method="POST" style="display:inline-block;">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="submit" class="btn btn-sm btn-danger">
-                                        Delete
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    `;
-                });
+                    <div class="col-md-10">
 
-                let pagination = '';
-                if (data.pagination) {
-                    pagination = `
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <button class="btn btn-outline-secondary btn-sm" 
-                                ${data.pagination.prev_page_url ? '' : 'disabled'}
-                                onclick="fetchClientData('${search}', '${data.pagination.prev_page_url}')">
-                                Previous
-                            </button>
+                        <input
+                            type="text"
+                            name="search"
+                            class="form-control"
+                            value="{{ $search ?? '' }}"
+                            placeholder="Search by client name, phone, email or passport..."
+                        >
 
-                            <span>Page ${data.pagination.current_page} of ${data.pagination.last_page}</span>
-
-                            <button class="btn btn-outline-secondary btn-sm"
-                                ${data.pagination.next_page_url ? '' : 'disabled'}
-                                onclick="fetchClientData('${search}', '${data.pagination.next_page_url}')">
-                                Next
-                            </button>
-                        </div>
-                    `;
-                }
-
-                resultDiv.innerHTML = `
-                    <div class="table-responsive mt-3">
-                        <table class="table table-bordered table-striped">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Passport</th>
-                                    <th>Address</th>
-                                    <th style="width:150px;">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>${rows}</tbody>
-                        </table>
                     </div>
-                    ${pagination}
-                `;
 
-            } else {
-                resultDiv.innerHTML = `<div class="alert alert-danger mt-3">${data.message}</div>`;
-            }
+                    <div class="col-md-2">
 
-        } catch (err) {
-            console.error(err);
-            resultDiv.innerHTML = `<div class="alert alert-danger mt-3">Error loading data!</div>`;
-        }
-    }
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-100"
+                        >
+                            Search
+                        </button>
 
-    // Form submit
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        fetchClientData(searchInput.value);
-    });
+                    </div>
 
-    // Auto load all clients on page load
-    window.addEventListener("load", () => fetchClientData());
-</script>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    {{-- ================= CLIENT TABLE ================= --}}
+    <div class="card">
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+
+            <h5 class="mb-0">
+                Client List
+            </h5>
+
+            <span class="text-muted">
+                {{ $clients->total() }} Clients
+            </span>
+
+        </div>
+
+
+        <div class="card-body p-0">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead class="table-light">
+
+                        <tr>
+
+                            <th style="width: 60px;">
+                                #
+                            </th>
+
+                            <th>
+                                Client
+                            </th>
+
+                            <th>
+                                Phone
+                            </th>
+
+                            <th>
+                                Passport
+                            </th>
+
+                            <th>
+                                Visas
+                            </th>
+
+                            <th>
+                                Created
+                            </th>
+
+                            <th class="text-end">
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        @forelse($clients as $index => $client)
+
+                            <tr>
+
+                                {{-- Serial --}}
+                                <td>
+                                    {{ $clients->firstItem() + $index }}
+                                </td>
+
+
+                                {{-- Client --}}
+                                <td>
+
+                                    <div class="fw-semibold">
+                                        {{ $client->name }}
+                                    </div>
+
+                                    @if($client->email)
+                                        <small class="text-muted">
+                                            {{ $client->email }}
+                                        </small>
+                                    @endif
+
+                                </td>
+
+
+                                {{-- Phone --}}
+                                <td>
+                                    {{ $client->phone ?? '-' }}
+                                </td>
+
+
+                                {{-- Passport --}}
+                                <td>
+                                    {{ $client->passport_no ?? '-' }}
+                                </td>
+
+
+                                {{-- Visa Count --}}
+                                <td>
+
+                                    <span class="badge bg-primary">
+                                        {{ $client->visas()->count() }}
+                                    </span>
+
+                                </td>
+
+
+                                {{-- Created --}}
+                                <td>
+
+                                    {{ $client->created_at?->format('d M Y') }}
+
+                                </td>
+
+
+                                {{-- Actions --}}
+                                <td>
+
+                                    <div class="d-flex justify-content-end gap-1">
+
+                                        {{-- View --}}
+                                        <a
+                                            href="{{ route('clients.show', $client) }}"
+                                            class="btn btn-sm btn-outline-primary"
+                                            title="View Client"
+                                        >
+                                            View
+                                        </a>
+
+
+                                        {{-- Edit --}}
+                                        <a
+                                            href="{{ route('clients.edit', $client) }}"
+                                            class="btn btn-sm btn-outline-secondary"
+                                            title="Edit Client"
+                                        >
+                                            Edit
+                                        </a>
+
+
+                                        {{-- Delete --}}
+                                        <form
+                                            action="{{ route('clients.destroy', $client) }}"
+                                            method="POST"
+                                            class="d-inline"
+                                            onsubmit="return confirm('Are you sure you want to delete this client?')"
+                                        >
+
+                                            @csrf
+
+                                            @method('DELETE')
+
+                                            <button
+                                                type="submit"
+                                                class="btn btn-sm btn-outline-danger"
+                                                title="Delete Client"
+                                            >
+                                                Delete
+                                            </button>
+
+                                        </form>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        @empty
+
+                            <tr>
+
+                                <td
+                                    colspan="7"
+                                    class="text-center py-5"
+                                >
+
+                                    <div class="text-muted">
+
+                                        @if($search)
+                                            No client found for
+                                            <strong>
+                                                "{{ $search }}"
+                                            </strong>
+                                        @else
+                                            No clients found.
+                                        @endif
+
+                                    </div>
+
+
+                                    @if($search)
+
+                                        <a
+                                            href="{{ route('clients.index') }}"
+                                            class="btn btn-sm btn-outline-primary mt-3"
+                                        >
+                                            Clear Search
+                                        </a>
+
+                                    @else
+
+                                        <a
+                                            href="{{ route('clients.create') }}"
+                                            class="btn btn-sm btn-primary mt-3"
+                                        >
+                                            + Add First Client
+                                        </a>
+
+                                    @endif
+
+                                </td>
+
+                            </tr>
+
+                        @endforelse
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        {{-- ================= PAGINATION ================= --}}
+        @if($clients->hasPages())
+
+            <div class="card-footer">
+
+                {{ $clients->links() }}
+
+            </div>
+
+        @endif
+
+    </div>
+
+</div>
 
 @endsection
